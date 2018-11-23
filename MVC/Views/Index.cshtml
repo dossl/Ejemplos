@@ -1,0 +1,250 @@
+﻿@model IEnumerable<StoreProject.Models.Store>
+
+@{
+    ViewBag.Title = Resource.ResourceStore_enUS.Store;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>@Resource.ResourceStore_enUS.DealerList</h2>
+
+@*<button id="addaa"  class="btn btn-primary ">Create New</button>*@
+<div class="form-group">
+    <a href="@Url.Action("Create")" class="btn btn-primary margin_buton" title="@Resource.ResourceStore_enUS.AddTitleStore">@Resource.ResourceStore_enUS.Add</a>
+</div>
+@Html.AntiForgeryToken()
+    <table id="store_table" style="margin-top: 20px;width:100%" class="table table-striped table-bordered nowrap">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.StoreCodeId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StoreName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ContactName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BankName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AccountNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BankingRoute)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AccountOwner)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserClaro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PassClaro)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.State.StateName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City.CityName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ZipCode)
+                </th> 
+                <th>
+                    @Html.DisplayNameFor(model => model.SocialNumber)
+                </th> 
+                <th>
+                    Phone activation
+                </th>
+                <th class="col-md-2 col-sm-2 col-xs-2"></th>
+            </tr>
+
+        </thead>
+        <tbody></tbody>
+
+    </table>
+
+    @section scripts
+    {
+        <script>
+
+
+            $(document).ready(function() {
+                var url = "@Url.Action("GetStores")";
+                var table = $("#store_table").DataTable({
+                    responsive: true,
+                    ajax: {
+                        url: url,
+                        method: "POST",
+                        dataSrc: ""
+                    },
+                    columns: [
+                        {
+                            data: "StoreCodeId"
+
+                        }, {
+                            data: "StoreName"
+
+                        },
+                        {
+                            data: "ContactName"
+
+                        },
+                        {
+                            data: "PhoneNumber"
+
+                        },
+                        {
+                            data: "Address"
+
+                        },
+                        {
+                            data: "Address2"
+
+                        },
+                        {
+                            data: "Email"
+
+                        },
+                        {
+                            data: "BankName"
+
+                        },
+                        {
+                            data: "AccountNumber"
+
+                        },
+                        {
+                            data: "BankingRoute"
+
+                        },
+                        {
+                            data: "AccountOwner"
+
+                        },
+                        {
+                            data: "UserClaro"
+
+                        },
+                        {
+                            data: "PassClaro"
+
+                        },
+                        {
+                            data: "State.StateName"
+
+                        },
+                        {
+                            data: "City.CityName"
+
+                        },
+                        {
+                            data: "ZipCode"
+
+                        },
+                        {
+                            data: "SocialNumber"
+
+                        },
+                        {
+                            data: "PhoneActivationLists",
+                            render: function (data, type, store) {
+
+                                var result = "<ul style='list-style-type: none'>";
+                                for (var i = 0; i < store.PhoneActivationLists.length; i++) {
+                                    result +=
+                                        "<li ><span class='dtr-title' style='font-weight: bold;'>User:</span> <span class='dtr-data'>" + store.PhoneActivationLists[i].UserPhoneAct + "</span></li><li ><span class='dtr-title' style='font-weight: bold;'>Password:</span> <span class='dtr-data'>" + store.PhoneActivationLists[i].PassPhoneAct + "</span></li>";
+                                }
+                                result += "</ul>";
+                                return result;
+
+                            }
+
+                        },
+                        
+                        {
+                            data: "StoreCodeId",
+                            bSearchable: false,
+                            className: 'all',
+                            render: function(data, type, store) {
+                                var url = "@Url.Action("Edit")/" + store.StoreCodeId;
+
+                                var admin = "@(User.IsInRole("Admin"))";
+
+                                if (admin.trim() == "False") {
+                                    return "<a href=" +
+                                        url +
+                                        " class='btn btn-success margin_buton disable_admin disabled' title='@Resource.ResourceStore_enUS.EditTitleStore'>@Resource.ResourceStore_enUS.Edit</a>" +
+                                        "<button id='delete_store' data-store-id=" +
+                                        store.StoreCodeId +
+                                        " class='btn btn-danger margin_buton disable_admin disabled' title='@Resource.ResourceStore_enUS.DeleteTitleStore'>@Resource.ResourceStore_enUS.Delete</button>";
+
+                                } else {
+                                    return "<a href=" +
+                                        url +
+                                        " class='btn btn-success margin_buton disable_admin' title='@Resource.ResourceStore_enUS.EditTitleStore'>@Resource.ResourceStore_enUS.Edit</a>" +
+                                        "<button id='delete_store' data-store-id=" +
+                                        store.StoreCodeId +
+                                        " class='btn btn-danger margin_buton disable_admin' title='@Resource.ResourceStore_enUS.DeleteTitleStore'>@Resource.ResourceStore_enUS.Delete</button>";
+
+                                }
+
+                            }
+
+
+                        }
+                    ]
+                });
+
+
+                new $.fn.dataTable.FixedHeader(table);
+
+                $("#store_table").on("click",
+                    "#delete_store",
+                    function() {
+                        var button = $(this);
+                        var token = $('input[name="__RequestVerificationToken"]').val();
+                        bootbox.confirm("@Resource.ResourceStore_enUS.confirmDelStore",
+                            function(result) {
+                                if (result) {
+                                    $.ajax({
+                                        url: "@Url.Action("DeleteStore")",
+                                        data: { __RequestVerificationToken: token, id: button.attr("data-store-id") },
+                                        method: "POST",
+                                        success: function(result) {
+                                            if (result.success) {
+                                                table.row(button.parents("tr")).remove().draw();
+                                            } else {
+                                                bootbox.alert(
+                                                    result.message,
+                                                    function(result) {
+                                                    });
+                                            }
+                                        }
+                                    });
+                                }
+                            });
+
+
+                    });
+
+
+            });
+
+        </script>
+    }

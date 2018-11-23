@@ -1,0 +1,588 @@
+﻿@model StoreProject.ViewModels.StoreViewModels
+
+@{
+    ViewBag.Title = @Resource.ResourceStore_enUS.Edit;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm("Edit", "ImsiStore", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "formAsign" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+    <div class="col-md-5 form-horizontal">
+        <h4>Store</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Store.StoreCodeId)
+            
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Store.StoreCodeId, new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Store.StoreCodeId, new { id = "StoreCodeId", style = "width:70%", disabled = "disabled", @readonly = "readonly" })
+
+            </div>
+            <div class="col-md-7">
+                @Html.ValidationMessageFor(model => model.Store.StoreCodeId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Store.StoreName, new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Store.StoreName, new { id = "StoreName", style = "width:70%" })
+
+            </div>
+            <div class="col-md-7">
+                @Html.ValidationMessageFor(model => model.Store.StoreName)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Store.ContactName, new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Store.ContactName, new { id = "ContactName", style = "width:70%" })
+
+            </div>
+            <div class="col-md-7">
+                @Html.ValidationMessageFor(model => model.Store.ContactName)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Store.PhoneNumber, new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Store.PhoneNumber, new { id = "PhoneNumber", style = "width:70%" })
+
+            </div>
+            <div class="col-md-7">
+                @Html.ValidationMessageFor(model => model.Store.PhoneNumber)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Store.Address, new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Store.Address, new { id = "Address", style = "width:70%" })
+            </div>
+            <div class="col-md-7">
+                @Html.ValidationMessageFor(model => model.Store.Address)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Store.Address2, new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Store.Address2, new { id = "Address2", style = "width:70%" })
+            </div>
+            <div class="col-md-7">
+                @Html.ValidationMessageFor(model => model.Store.Address2)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Store.Email, new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Store.Email, new { id = "Email", style = "width:70%" })
+            </div>
+            <div class="col-md-7">
+                @Html.ValidationMessageFor(model => model.Store.Email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Store.BankName, new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Store.BankName, new { id = "BankName", style = "width:70%" })
+            </div>
+            <div class="col-md-7">
+                @Html.ValidationMessageFor(model => model.Store.BankName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Store.AccountNumber, new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Store.AccountNumber, new { id = "AccountNumber", style = "width:70%" })
+            </div>
+            <div class="col-md-7">
+                @Html.ValidationMessageFor(model => model.Store.AccountNumber)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Store.BankingRoute, new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Store.BankingRoute, new { id = "BankingRoute", style = "width:70%" })
+            </div>
+            <div class="col-md-7">
+                @Html.ValidationMessageFor(model => model.Store.BankingRoute)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Store.AccountOwner, new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Store.AccountOwner, new { id = "AccountOwner", style = "width:70%" })
+            </div>
+            <div class="col-md-7">
+                @Html.ValidationMessageFor(model => model.Store.AccountOwner)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Store.StateCodeId, new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.DropDownListFor(model => model.Store.StateCodeId, new SelectList(Model.States, "StateCodeId", "StateName"), "Select state", new { style = "width:70%" })
+            </div>
+            <div class="col-md-7">
+                @Html.ValidationMessageFor(model => model.Store.StateCodeId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Store.CityId, new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.DropDownListFor(model => model.Store.CityId, new SelectList(Model.Cities, "CityId", "CityName"), "Select city", new { style = "width:70%"})
+            </div>
+            <div class="col-md-7">
+                @Html.ValidationMessageFor(model => model.Store.CityId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Store.ZipCode, new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Store.ZipCode, new { id = "ZipCode", style = "width:70%" })
+            </div>
+            <div class="col-md-7">
+                @Html.ValidationMessageFor(model => model.Store.ZipCode)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Store.SocialNumber, new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Store.SocialNumber, new { id = "SocialNumber", style = "width:70%" })
+            </div>
+            <div class="col-md-7">
+                @Html.ValidationMessageFor(model => model.Store.SocialNumber)
+            </div>
+        </div>
+            
+    </div>
+
+    <div class="col-md-7 form-horizontal">
+        <h4 style="height: 20px"></h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div>
+            <label>@Resource.ResourceStore_enUS.Claro</label>
+        </div>
+        <div class="form-horizontal contenedor">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Store.UserClaro, new { @class = "control-label col-md-5" })
+                <div class="col-md-7">
+                    @Html.TextBoxFor(model => model.Store.UserClaro, new { id = "UserClaro", style = "width:50%" })
+                </div>
+                <div class="col-md-7">
+                    @Html.ValidationMessageFor(model => model.Store.UserClaro)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Store.PassClaro, new { @class = "control-label col-md-5" })
+                <div class="col-md-7">
+                    @Html.TextBoxFor(model => model.Store.PassClaro, new { id = "PassClaro", style = "width:50%" })
+                </div>
+                <div class="col-md-7">
+                    @Html.ValidationMessageFor(model => model.Store.PassClaro)
+                </div>
+
+            </div>
+        </div>
+        <div style="margin-top: 15px">
+            <label>@Resource.ResourceStore_enUS.Phoneactivation</label>
+        </div>
+        <div class="form-horizontal contenedor">
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserPhoneAct, new { @class = "control-label col-md-5" })
+                <div class="col-md-7">
+                    @Html.TextBoxFor(model => model.UserPhoneAct, new { id = "UserPhoneAct", style = "width:50%" })
+                </div>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PassPhoneAct, new { @class = "control-label col-md-5" })
+                <div class="col-md-7">
+                    @Html.TextBoxFor(model => model.PassPhoneAct, new { id = "PassPhoneAct", style = "width:50%" })
+                </div>
+            </div>
+            <div class="col-md-offset-9">
+                <input id="btnadduser" type="button" value="@Resource.ResourceStore_enUS.Add" class="btn btn-primary" />
+            </div>
+
+
+            <div class="col-md-12 col-sm-10 col-xs-10 " style="margin-top: 10px; padding-left: 0">
+                <h4 style="margin-left: 20%;font-weight: bold;" >User list <span class="countuser" style="margin-left: 20%; float: right !important;font-weight: bold;"></span></h4>
+                <div style="padding-bottom: 10px;">
+                    <h5 style="margin-left: 7%; font-weight: bold;" class="col-md-4 col-xs-4">User </h5>
+                    <h5 style="margin-left: 4%; font-weight: bold;" class="col-md-5 col-xs-5">Password </h5>
+                </div>
+
+                <div class="listISMI">
+
+                    <ul class="reminders"></ul>
+
+
+                </div>
+                <button type="button" style="float: right" class="btn btn-danger clear-all">Delete all</button>
+            </div>
+
+        </div>
+
+
+    </div>
+    </div>
+
+    <div id="notification" class="alert" style="display:none" role="alert"></div>  
+
+    <div class="col-md-offset-8">
+        <input type="button" id="btnsave" value="@Resource.ResourceStore_enUS.Save" class="btn btn-primary" />
+        <a href="@Url.Action("Index")" class="btn btn-default">@Resource.ResourceStore_enUS.Cancel</a>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    
+<script>
+
+
+    $(document).ready(function () {
+
+        $("#PhoneNumber").inputmask({ "mask": "(999) 999-9999", "clearIncomplete": true });
+
+
+
+        var lista = [];
+
+        @foreach (var d in Model.PhoneActivationLists)
+            {
+                @:lista.push({ "user": "@d.UserPhoneAct", "pass": "@d.PassPhoneAct" });
+            }
+
+        var count = 0;
+        var arr = [];
+
+
+        var createReminder = function (id, content, pass, index) {
+
+            var reminder = '<li style="height:auto;!important" id="' +
+                    id +
+                    '"><input type="text" value="' +
+                    content +
+                    '"/> <input type="text" value="' +
+                    pass +
+                    '"/></li>',
+                list = $('.reminders li');
+
+
+            if (!$('#' + id).length) {
+
+                if (index && index < list.length) {
+                    var i = index + 1;
+                    reminder = $(reminder).addClass('restored-item');
+                    $('.reminders li:nth-child(' + i + ')').before(reminder);
+                }
+                if (index === 0) {
+                    reminder = $(reminder).addClass('restored-item');
+                    $('.reminders').prepend(reminder);
+                }
+                if (index === list.length) {
+                    reminder = $(reminder).addClass('restored-item');
+                    $('.reminders').append(reminder);
+                }
+                if (index === undefined) {
+                    reminder = $(reminder).addClass('new-item');
+                    $('.reminders').append(reminder);
+                }
+                var createdItem = $('#' + id);
+
+                createdItem.append($('<span />',
+                    {
+                        "class": "glyphicon glyphicon-trash",
+                        "style": "float:right;cursor:pointer;padding:3px",
+                        "contenteditable": "false",
+                        click: function () {
+                            removeReminder(id);
+
+                        }
+                    }));
+
+
+                arr.push({ "id": id, "user": content, "pass": pass });
+
+                createdItem.on('keydown',
+                    function (ev) {
+                        if (ev.keyCode === 13) return false;
+                    });
+
+                // saveReminder(id, content);
+                count++;
+                updateCounter();
+            }
+        };
+
+
+        loadListUsers(lista);
+
+        updateCounter();
+
+        $("#btnsave").on("click",
+                function () {
+                    var url = "@Url.Action("EditByAjax")";
+
+                    var storeName = $("#StoreName").val();
+                    var storeCodeId = $("#StoreCodeId").val();
+                    var contactName = $("#ContactName").val();
+                    var phoneNumber = $("#PhoneNumber").val();
+                    var address = $("#Address").val();
+                    var address2 = $("#Address2").val();
+                    var email = $("#Email").val();
+                    var bankName = $("#BankName").val();
+                    var accountNumber = $("#AccountNumber").val();
+                    var bankingRoute = $("#BankingRoute").val();
+                    var accountOwner = $("#AccountOwner").val();
+                    var userClaro = $("#UserClaro").val();
+                    var passClaro = $("#PassClaro").val();
+                    var socialNumber = $("#SocialNumber").val();
+                    var stateCodeId = $("#Store_StateCodeId").val();
+                    var cityId = $("#Store_CityId").val();
+                    var zipCode = $("#ZipCode").val();
+
+                    var form = $('#formAsign');
+                    var token = $('input[name="__RequestVerificationToken"]', form).val();
+
+
+                    if ($("#formAsign").valid()) {
+                        if ($("#PhoneNumber").inputmask("isComplete")) {
+                            $("#PhoneNumber").removeClass("input-validation-error");
+                        var button = $(this).button('loading');
+                            var items = $('li[id ^= reminder]');
+                            var arregl = [];
+                            for (var i = 0; i < items.length; i++) {
+                                arregl.push({ "user": (items[i].children[0].value), "pass": (items[i].children[1].value) });
+                            }
+                            $("#notification").hide();
+                            if (arregl.length > 0) {
+                        $.ajax({
+                            url: url,
+                            data: {
+                                __RequestVerificationToken: token,
+                                StoreCodeId: storeCodeId,
+                                StoreName: storeName,
+                                ContactName: contactName,
+                                PhoneNumber: phoneNumber,
+                                Address: address,
+                                Address2: address2,
+                                Email: email,
+                                BankName: bankName,
+                                AccountNumber: accountNumber,
+                                BankingRoute: bankingRoute,
+                                AccountOwner: accountOwner,
+                                UserClaro: userClaro,
+                                PassClaro: passClaro,
+                                SocialNumber: socialNumber,
+                                StateCodeId: stateCodeId,
+                                CityId: cityId,
+                                ZipCode: zipCode,
+                                Arr: JSON.stringify(arr)
+                            },
+                            method: "POST",
+                            success: function (result) {
+                                if (result.success) {
+                                    button.button('reset');
+                                    $('form').trigger("reset");
+                                    removeAll();
+                                    window.location = "@Url.Action("Index")";
+                                } else {
+                                        button.button('reset');
+                                        mostrarNotificacion("danger", result.message);
+                              }
+                            }
+                        });
+                            } else {
+                                button.button('reset');
+                                mostrarNotificacion("danger", "@Resource.ResourceStore_enUS.OneUser");
+
+                            }
+                        } else {
+                            $("#PhoneNumber").addClass("input-validation-error");
+                        }
+
+                    } else {
+                        $("#notification").hide();
+                        var a = $("form", ".input-validation-error");
+                        a.prevObject[0].focus();
+                    }
+
+
+
+                });
+
+
+                $("#ZipCode").on("keypress keyup blur", function (event) {
+                    $(this).val($(this).val().replace(/[^\d].+/, ""));
+                    if ((event.which < 48 || event.which > 57)) {
+                        event.preventDefault();
+                    }
+                });
+
+
+
+                function loadListUsers(myarr) {
+                    for (var i = 0; i < myarr.length; i++) {
+                        createReminder("reminder-" + +new Date(), myarr[i].user, myarr[i].pass);
+
+                    }
+                }
+
+                function updateCounter() {
+                    $('.countuser').text(count);
+                    var deleteButton = $('.clear-all');
+                    if (count === 0) {
+                        deleteButton.attr('disabled', 'disabled').addClass('disabled');
+                    } else {
+                        deleteButton.removeAttr('disabled').removeClass('disabled');
+                    }
+                }
+
+                function removeStore(value) {
+                    for (var i = 0; i < arr.length; i++) {
+                        if (arr[i].id == value) {
+                            arr.splice(i, 1);
+                        }
+
+                    }
+                }
+
+
+
+                var removeReminder = function (id) {
+                    var item = $('#' + id);
+
+                    item.addClass('removed-item')
+                        .one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
+                            function (e) {
+                                $(this).remove();
+                            });
+
+                    removeStore(id);
+                    count--;
+                    updateCounter();
+
+                };
+
+                function removeAll() {
+                    // var items = $('li[id ^= reminder]');
+                    var items = $('ul.reminders li');
+                    items.addClass('removed-item').one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
+                        function (e) {
+                            $(this).remove();
+                        });
+                    arr = [];
+
+                    count = 0;
+                    updateCounter();
+                }
+
+                $('.clear-all').on('click',
+                    function () {
+                        removeAll();
+                    });
+
+
+        $("#btnadduser").on("click",
+            function (a) {
+                if ($("#UserPhoneAct").val() == "" && $("#PassPhoneAct").val() == "") {
+                    $("#UserPhoneAct").addClass("input-validation-error");
+                    $("#PassPhoneAct").addClass("input-validation-error");
+                }
+                if ($("#UserPhoneAct").val() == "") {
+                    $("#UserPhoneAct").addClass("input-validation-error");
+
+                } else if ($("#PassPhoneAct").val() == "") {
+                    $("#PassPhoneAct").addClass("input-validation-error");
+                } else {
+                    createReminder("reminder-" + +new Date(),
+                        $("#UserPhoneAct").val(),
+                        $("#PassPhoneAct").val());
+                }
+            });
+
+
+                $("#Store_StateCodeId").change(function (c) {
+                    var url = "@Url.Action("GetCityList")";
+
+                    // debugger;
+                    var stateId = $("#Store_StateCodeId").val();
+
+                    $.ajax
+                    ({
+                        url: url,
+                        type: 'POST',
+                        datatype: 'application/json',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            stateId: stateId
+                        }),
+                        success: function (result) {
+                            $("#Store_CityId").html("");
+                            if (result.length == 0) {
+                                $("#Store_CityId").attr("disabled", true);
+                                $("#Store_CityId").append
+                                    ($('<option></option>').val("").html("Select city"));
+                            } else {
+                                $("#Store_CityId").attr("disabled", false);
+                                $("#Store_CityId").append
+                                    ($('<option></option>').val("").html("Select city"));
+                                $.each(result,
+                                    function (i, city) {
+                                        $("#Store_CityId").append
+                                            ($('<option></option>').val(city.CityId).html(city.CityName));
+                                    });
+                            }
+
+                        },
+                        error: function () {
+                        }
+                    });
+                });
+
+        function mostrarNotificacion(type, message) {
+            if (message != null && message != "") {
+                if (type == "success") {
+                    $("#notification").html(message);
+                    $("#notification").attr("class", "alert alert-success");
+                    $("#notification").show();
+                } else if (type == "danger") {
+                    $("#notification").html(message);
+                    $("#notification").attr("class", "alert alert-danger");
+                    $("#notification").show();
+                } else if (type == "warning") {
+                    $("#notification").html(message);
+                    $("#notification").attr("class", "alert alert-danger");
+                    $("#notification").show();
+                }
+            }
+        }
+
+
+    });
+
+</script>
+}
