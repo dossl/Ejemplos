@@ -1,0 +1,33 @@
+{
+     "android": {
+      "release": {
+        "keystore": "c:\\dossl.keystore",
+        "storePassword": "sportcenter123",
+        "alias": "Dossl",
+        "password": "sportcenter123",
+        "keystoreType": ""
+      }
+     },
+	 "ios": {
+    "debug": {
+      "developmentTeam": "2NKYX9Z56C",
+      "packageType": "development",
+      "buildFlag": [
+        "EMBEDDED_CONTENT_CONTAINS_SWIFT = YES",
+        "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO",
+        "LD_RUNPATH_SEARCH_PATHS = \"@executable_path/Frameworks\""
+      ]
+    },
+
+    "release": {
+      "developmentTeam": "2NKYX9Z56C",
+      "codeSignIdentity": "iPhone Developer",
+      "packageType": "app-store",
+      "buildFlag": [
+        "EMBEDDED_CONTENT_CONTAINS_SWIFT = YES",
+        "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO",
+        "LD_RUNPATH_SEARCH_PATHS = \"@executable_path/Frameworks\""
+      ]
+    }
+  }
+ }
