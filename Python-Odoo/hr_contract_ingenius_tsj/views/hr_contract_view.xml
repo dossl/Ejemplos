@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="hr_contract_tsj_form" model="ir.ui.view">
+            <field name="name">hr.contract.tsj.form</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//sheet" position="before">
+                        <header>
+                            <button name="set_approved" class="oe_highlight" states="draft" string="Aprobar"
+                                    groups="installer_ingenius_tsj.group_tsj_hr_manager" type="object"/>
+                            <button name="set_draft" states="approved" string="Borrador"
+                                    groups="installer_ingenius_tsj.group_tsj_hr_manager" type="object"/>
+                            <button name="set_closed" class="oe_highlight" states="approved" string="Terminar"
+                                    groups="installer_ingenius_tsj.group_tsj_hr_manager" type="object"/>
+                            <field name="state" widget="statusbar" statusbar_visible="draft,approved,closed"/>
+                        </header>
+                    </xpath>
+                    <field name="wage" position="attributes">
+                        <attribute name="string">Tarifa Horaria Básica/Pago por Servicios</attribute>
+                        <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                    </field>
+
+                    <xpath expr="//field[@name='working_hours']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='advantages']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//page[@string='Work Permit']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <!--<field name="job_id" position="attributes">-->
+                        <!--<attribute name="invisible">1</attribute>-->
+                    <!--</field>-->
+                    <field name="type_id" position="replace">
+                        <field name="destajo"/>
+                        <field name="type_id" invisible="1"/>
+                    </field>
+                    <field name="name" position="attributes">
+                        <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                    </field>
+                    <field name="employee_id" position="attributes">
+                        <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                    </field>
+                    <!--<field name="struct_id" position="attributes">-->
+                        <!--<attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>-->
+                    <!--</field>-->
+                    <field name="trial_date_start" position="attributes">
+                        <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                    </field>
+                    <field name="trial_date_end" position="attributes">
+                        <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                    </field>
+                    <field name="date_start" position="attributes">
+                        <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                    </field>
+                    <field name="date_end" position="attributes">
+                        <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                    </field>
+                    <!--<field name="schedule_pay" position="attributes">-->
+                        <!--<attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>-->
+                    <!--</field>-->
+                    <field name="notes" position="attributes">
+                        <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                    </field>
+                    <page name="information" position="after">
+                        <page name="tarifas" string="Condiciones de Tarifa Horaria">
+                            <field name="contract_tarifa_ids">
+                                <tree editable="bottom">
+                                    <field name="hour_type_id"
+                                           on_change="onchange_hour_type_id(hour_type_id, parent.wage)"/>
+                                    <field name="amount_type"
+                                           on_change="onchange_vals(amount_type, amount_qty, parent.wage)"/>
+                                    <field name="amount_qty"
+                                           on_change="onchange_vals(amount_type, amount_qty, parent.wage)"/>
+                                    <field name="for_free"/>
+                                    <field name="total"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </page>
+                </data>
+            </field>
+        </record>
+
+        <record id="hr_contract_tsj_view_tree" model="ir.ui.view">
+            <field name="name">hr.contract.tsj.view.tree</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_tree"/>
+            <field name="arch" type="xml">
+                <field name="working_hours" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

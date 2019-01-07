@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_hr_work_period_hour_type_tree" model="ir.ui.view">
+            <field name="name">hr.hour.type.tree</field>
+            <field name="model">hr.hour.type</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <tree string="Tipos de Hora" editable="bottom">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="default_type"/>
+                    <field name="default_value"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_hr_work_period_hour_type" model="ir.actions.act_window">
+            <field name="name">Tipos de Hora</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.hour.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click para crear un tipo de hora.
+                </p>
+            </field>
+        </record>
+
+        <!--&lt;!&ndash;Menus&ndash;&gt;-->
+        <!--&lt;!&ndash;Menu raiz de la configuracion del periodo laboral&ndash;&gt;-->
+        <!--<menuitem id="menu_hr_contract_config_root" parent="hr.menu_hr_configuration" sequence="6"-->
+                  <!--groups="base.group_no_one" name="Contrato"/>-->
+
+        <!--Menu de configuracion de los tipos de hora-->
+        <menuitem action="action_hr_work_period_hour_type" id="menu_hr_contract_hour_type"
+                  parent="hr_contract.next_id_56" sequence="5" groups="base.group_hr_user"/>
+
+    </data>
+</openerp>
+
+

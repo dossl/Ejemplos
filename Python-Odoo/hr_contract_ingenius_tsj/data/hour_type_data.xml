@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <!--Tipos de Hora-->
+        <record id="hour_normal" model="hr.hour.type">
+            <field name="name">Normal</field>
+            <field name="code">NRM</field>
+            <field name="default_type">coef</field>
+            <field name="default_value">1</field>
+        </record>
+
+        <record id="hour_ligera" model="hr.hour.type">
+            <field name="name">Ligera</field>
+            <field name="code">LIG</field>
+            <field name="default_type">coef</field>
+            <field name="default_value">1.5</field>
+        </record>
+
+        <record id="hour_pesada" model="hr.hour.type">
+            <field name="name">Pesada</field>
+            <field name="code">PES</field>
+            <field name="default_type">coef</field>
+            <field name="default_value">2</field>
+        </record>
+
+        <record id="hour_extra_pesada" model="hr.hour.type">
+            <field name="name">Extra Pesada</field>
+            <field name="code">EXTPES</field>
+            <field name="default_type">coef</field>
+            <field name="default_value">2</field>
+        </record>
+
+        <record id="hour_interrupto" model="hr.hour.type">
+            <field name="name">Interrupto</field>
+            <field name="code">IPTO</field>
+            <field name="default_type">coef</field>
+            <field name="default_value">0.5</field>
+        </record>
+
+        <record id="hour_especial_1" model="hr.hour.type">
+            <field name="name">Especial Normal</field>
+            <field name="code">ESP1</field>
+            <field name="default_type">coef</field>
+            <field name="default_value">1.5</field>
+        </record>
+
+        <record id="hour_especial_2" model="hr.hour.type">
+            <field name="name">Especial Extra</field>
+            <field name="code">ESP2</field>
+            <field name="default_type">coef</field>
+            <field name="default_value">2</field>
+        </record>
+
+    </data>
+</openerp>
