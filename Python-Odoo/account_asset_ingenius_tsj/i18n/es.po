@@ -1,0 +1,68 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* account_asset_ingenius_tsj
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0-20150807\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-22 14:03+0000\n"
+"PO-Revision-Date: 2016-07-22 14:03+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_asset_ingenius_tsj
+#: model:ir.model,name:account_asset_ingenius_tsj.model_account_asset_asset
+msgid "Asset"
+msgstr "Activo"
+
+#. module: account_asset_ingenius_tsj
+#: field:account.asset.asset,fecha_compra:0
+msgid "Fecha de Compra"
+msgstr "Fecha de Compra"
+
+#. module: account_asset_ingenius_tsj
+#: view:account.asset.asset:account_asset_ingenius_tsj.account_asset_form_ingenius_view
+msgid "Inicio de Explot."
+msgstr "Inicio de Explot."
+
+#. module: account_asset_ingenius_tsj
+#: field:account.asset.asset,no_inv:0
+msgid "No. Inventario"
+msgstr "No. Inventario"
+
+#. module: account_asset
+#: field:account.asset.depreciation.line,depreciation_date:0
+#: field:asset.asset.report,depreciation_date:0
+#: view:asset.asset.report:account_asset.view_asset_asset_report_search
+msgid "Depreciation Date"
+msgstr "Fecha de Depreciación"
+
+#. module: account_asset
+#: field:account.asset.depreciation.line,depreciated_value:0
+msgid "Amount Already Depreciated"
+msgstr "Depreciación Acumulada"
+
+#. module: account_asset
+#: field:account.asset.depreciation.line,amount:0
+msgid "Current Depreciation"
+msgstr "Depreciación"
+
+#. module: account_asset
+#: field:account.asset.depreciation.line,remaining_value:0
+msgid "Next Period Depreciation"
+msgstr "Valor Residual"
+
+#. module: account_asset
+#: field:account.asset.asset,value_residual:0
+msgid "Residual Value"
+msgstr "Valor residual"
+
+#. module: account_asset
+#: selection:account.asset.asset,state:0 selection:asset.asset.report,state:0
+msgid "Close"
+msgstr "Cerrado"

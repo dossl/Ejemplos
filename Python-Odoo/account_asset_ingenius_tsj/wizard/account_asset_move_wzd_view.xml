@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="assets_move_wzd_view" model="ir.ui.view">
+            <field name="name">Movimiento de Activos Fijos</field>
+            <field name="model">account.asset.move.wzd</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Movimiento de Activos Fijos">
+                    <sheet>
+                        <group name="Assets" string="Movimiento de Activos Fijos" col="4" colspan="4">
+                            <p class="oe_grey">
+                                Se realizará el movimiento de los siguientes activos hacias las áreas y responsables
+                                seleccionados.
+                            </p>
+                            <field name="line_ids" nolabel="1" colspan="4">
+                                <tree editable="bottom">
+                                    <field name="asset_id" on_change="onchange_asset_id(asset_id, context)"/>
+                                    <field name="origin_department_id"/>
+                                    <field name="dest_department_id" required="1"
+                                           on_change="onchange_department_id(dest_department_id, context)"/>
+                                    <field name="old_responsible_id"/>
+                                    <field name="new_responsible_id" required="1"/>
+                                    <field name="old_account_analytic_id"/>
+                                    <field name="account_analytic_id" domain="[('type', '=', 'normal')]"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="move_assets" type="object" string="Transferir" class="oe_highlight"
+                                confirm="¿Está seguro que desea dar mover los activos seleccionados?"/>
+                        or
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window name="Realizar Movimiento" res_model="account.asset.move.wzd" src_model="account.asset.asset"
+                    view_mode="form" target="new" key2="client_action_multi" id="account_asset_move_wzd_action"/>
+
+    </data>
+</openerp>
+
+

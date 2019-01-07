@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="assets_execution_wzd_view" model="ir.ui.view">
+            <field name="name">Poner Activos en Ejecución</field>
+            <field name="model">account.asset.execution.wzd</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Poner Activos en Ejecución">
+                    <group name="Assets" col="4" colspan="4">
+                        <p class="oe_grey">
+                            Los activos seleccionados previamente pasarán a estar en ejecución.
+                        </p>
+                    </group>
+                    <footer>
+                        <button name="apply" type="object" string="Aplicar" class="oe_highlight"/>
+                        or
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window name="Poner en Ejecución" res_model="account.asset.execution.wzd" src_model="account.asset.asset"
+                    view_mode="form" target="new" key2="client_action_multi" id="account_asset_execution_wzd_action"/>
+
+    </data>
+</openerp>
+
+

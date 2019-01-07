@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="sequence_assets_journal_ingenius_tsj" model="ir.sequence">
+            <field name="name">Secuencia Activos Fijos</field>
+            <field eval="4" name="padding"/>
+            <field name="prefix">AF/%(year)s/</field>
+            <field name="implementation">no_gap</field>
+        </record>
+
+        <record id="assets_journal_ingenius_tsj" model="account.journal">
+            <field name="name">Activos Fijos</field>
+            <field name="code">AF</field>
+            <field name="type">general</field>
+            <field name="sequence_id" ref="sequence_assets_journal_ingenius_tsj"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="entry_posted" eval="True"/>
+        </record>
+
+    </data>
+</openerp>

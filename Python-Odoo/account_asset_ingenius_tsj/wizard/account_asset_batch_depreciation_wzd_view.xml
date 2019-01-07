@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="assets_batch_depreciation_view" model="ir.ui.view">
+            <field name="name">Depreciacion en Lote</field>
+            <field name="model">asset.depreciation.batch.wzd</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Depreciacion en Lote">
+                    <p class="oe_grey">
+                        Seleccione la fecha hasta la que desea depreciar los activos
+                    </p>
+                    <group name="Depreciation Lines" col="4" colspan="4">
+                        <field name="date" class="oe_inline" required="1"/>
+                    </group>
+                    <footer>
+                        <button name="batch_depreciation" type="object" string="Depreciar"
+                                class="oe_highlight"/>
+                        or
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_batch_asset_depreciation">
+            <field name="name">Depreciación de Activos</field>
+            <field name="res_model">asset.depreciation.batch.wzd</field>
+            <field name="target">new</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+        </record>
+
+        <menuitem parent="account_asset.menu_finance_assets" id="account_asset_batch_depreciation_menu"
+                  action="action_batch_asset_depreciation"/>
+
+    </data>
+</openerp>
+
+

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="assets_to_depreciate_view" model="ir.ui.view">
+            <field name="name">Activos a Depreciar</field>
+            <field name="model">asset.depreciation.wzd</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Activos a Depreciar">
+                    <sheet>
+                        <group name="Depreciation Lines" col="4" colspan="4">
+                            <p class="oe_grey" co="4" colspan="4">
+                                Dejar vacías las fechas si no quiere tener en cuenta ningún período.
+                            </p>
+                            <div>
+                                Del
+                                <field name="period_start_date" class="oe_inline"
+                                       attrs="{'required': [('period_end_date', '!=', False)]}"/>
+                                al
+                                <field name="period_end_date" class="oe_inline"
+                                       attrs="{'required': [('period_start_date', '!=', False)]}"/>
+                            </div>
+                            <field name="line_ids" nolabel="1" colspan="4">
+                                <tree create="0" edit="0">
+                                    <field name="asset_id"/>
+                                    <field name="depreciation_date"/>
+                                    <field name="depreciated_value"/>
+                                    <field name="amount"/>
+                                    <field name="remaining_value"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="batch_depreciation" type="object" string="Depreciar"
+                                class="oe_highlight"/>
+                        or
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window name="Depreciación" res_model="asset.depreciation.wzd" src_model="account.asset.asset"
+                    view_mode="form" target="new" key2="client_action_multi" id="batch_asset_depreciation_action"/>
+
+    </data>
+</openerp>
+
+

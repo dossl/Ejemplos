@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="assets_open_moves_view" model="ir.ui.view">
+            <field name="name">Generar Apertura</field>
+            <field name="model">asset.open.moves.wzd</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Asientos de Apertura">
+                    <p class="oe_grey">
+                        Generar asientos de apertura para activos fijos.
+                    </p>
+                    <group name="Apertura" col="4" colspan="4">
+                        <field name="date" class="oe_inline" required="1"/>
+                    </group>
+                    <footer>
+                        <button name="open_moves" type="object" string="Generar"
+                                class="oe_highlight"/>
+                        or
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window name="Generar Apertura" res_model="asset.open.moves.wzd" src_model="account.asset.asset"
+                    view_mode="form" target="new" key2="client_action_multi" id="action_assets_open_moves"/>
+
+        <!--<menuitem parent="account_asset.menu_finance_assets" id="account_asset_action_assets_open_moves_menu"-->
+                  <!--action="action_assets_open_moves" sequence="20"/>-->
+
+    </data>
+</openerp>
+
+
