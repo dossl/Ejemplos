@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="report_account_chart_element_tsj">
+            <t t-call="report.html_container">
+                <t t-set="data_report_margin_top" t-value="15"/>
+                <t t-set="data_report_header_spacing" t-value="12"/>
+                <t t-set="data_report_dpi" t-value="110"/>
+                <t t-call="report.internal_layout">
+                    <div class="page">
+                        <h2 class="text-center">Gastos por Elementos <span t-esc="res_company.currency_id and '(' + res_company.currency_id.name + ')' or ''"/></h2>
+                        <t t-if="data['form']['type'] == 'summary'">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th class="text-left">DETALLE</th>
+                                        <th class="text-right">APE</th>
+                                        <th class="text-right">ENE</th>
+                                        <th class="text-right">FEB</th>
+                                        <th class="text-right">MAR</th>
+                                        <th class="text-right">ABR</th>
+                                        <th class="text-right">MAY</th>
+                                        <th class="text-right">JUN</th>
+                                        <th class="text-right">JUL</th>
+                                        <th class="text-right">AGO</th>
+                                        <th class="text-right">SEP</th>
+                                        <th class="text-right">OCT</th>
+                                        <th class="text-right">NOV</th>
+                                        <th class="text-right">DIC</th>
+                                        <th class="text-right">TOTAL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="summary(data['form'])" t-as="elem">
+                                        <tr>
+                                            <td class="text-left"><span t-esc="elem['name']"/></td>
+                                            <td class="text-right"><span t-esc="formatLang(elem['totals'][0])"/></td>
+                                            <td class="text-right"><span t-esc="formatLang(elem['totals'][1])"/></td>
+                                            <td class="text-right"><span t-esc="formatLang(elem['totals'][2])"/></td>
+                                            <td class="text-right"><span t-esc="formatLang(elem['totals'][3])"/></td>
+                                            <td class="text-right"><span t-esc="formatLang(elem['totals'][4])"/></td>
+                                            <td class="text-right"><span t-esc="formatLang(elem['totals'][5])"/></td>
+                                            <td class="text-right"><span t-esc="formatLang(elem['totals'][6])"/></td>
+                                            <td class="text-right"><span t-esc="formatLang(elem['totals'][7])"/></td>
+                                            <td class="text-right"><span t-esc="formatLang(elem['totals'][8])"/></td>
+                                            <td class="text-right"><span t-esc="formatLang(elem['totals'][9])"/></td>
+                                            <td class="text-right"><span t-esc="formatLang(elem['totals'][10])"/></td>
+                                            <td class="text-right"><span t-esc="formatLang(elem['totals'][11])"/></td>
+                                            <td class="text-right"><span t-esc="formatLang(elem['totals'][12])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][13])"/></td>
+                                        </tr>
+                                    </t>
+                                    <tr>
+                                        <td class="text-left"><b>TOTALES</b></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[0])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[1])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[2])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[3])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[4])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[5])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[6])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[7])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[8])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[9])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[10])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[11])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[12])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[13])"/></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                        </t>
+                        <t t-if="data['form']['type'] == 'detail'">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th class="text-left">DETALLE</th>
+                                        <th class="text-right">APE</th>
+                                        <th class="text-right">ENE</th>
+                                        <th class="text-right">FEB</th>
+                                        <th class="text-right">MAR</th>
+                                        <th class="text-right">ABR</th>
+                                        <th class="text-right">MAY</th>
+                                        <th class="text-right">JUN</th>
+                                        <th class="text-right">JUL</th>
+                                        <th class="text-right">AGO</th>
+                                        <th class="text-right">SEP</th>
+                                        <th class="text-right">OCT</th>
+                                        <th class="text-right">NOV</th>
+                                        <th class="text-right">DIC</th>
+                                        <th class="text-right">TOTAL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="detail(data['form'])" t-as="elem">
+                                        <tr>
+                                            <td class="text-left"><b t-esc="elem['name']"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][0])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][1])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][2])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][3])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][4])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][5])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][6])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][7])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][8])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][9])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][10])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][11])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][12])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][13])"/></td>
+                                        </tr>
+                                        <t t-foreach="elem['accounts'].values()" t-as="acc">
+                                            <tr>
+                                                <td><span style="margin-left: 15px;" t-esc="acc['name']"/></td>
+                                                <td class="text-right"><span t-esc="formatLang(acc['subtotals'][0])"/></td>
+                                                <td class="text-right"><span t-esc="formatLang(acc['subtotals'][1])"/></td>
+                                                <td class="text-right"><span t-esc="formatLang(acc['subtotals'][2])"/></td>
+                                                <td class="text-right"><span t-esc="formatLang(acc['subtotals'][3])"/></td>
+                                                <td class="text-right"><span t-esc="formatLang(acc['subtotals'][4])"/></td>
+                                                <td class="text-right"><span t-esc="formatLang(acc['subtotals'][5])"/></td>
+                                                <td class="text-right"><span t-esc="formatLang(acc['subtotals'][6])"/></td>
+                                                <td class="text-right"><span t-esc="formatLang(acc['subtotals'][7])"/></td>
+                                                <td class="text-right"><span t-esc="formatLang(acc['subtotals'][8])"/></td>
+                                                <td class="text-right"><span t-esc="formatLang(acc['subtotals'][9])"/></td>
+                                                <td class="text-right"><span t-esc="formatLang(acc['subtotals'][10])"/></td>
+                                                <td class="text-right"><span t-esc="formatLang(acc['subtotals'][11])"/></td>
+                                                <td class="text-right"><span t-esc="formatLang(acc['subtotals'][12])"/></td>
+                                                <td class="text-right"><b t-esc="formatLang(acc['subtotals'][13])"/></td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                    <tr>
+                                        <td class="text-left"><b>TOTALES</b></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[0])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[1])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[2])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[3])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[4])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[5])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[6])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[7])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[8])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[9])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[10])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[11])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[12])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[13])"/></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                        </t>
+                        <t t-if="data['form']['type'] == 'subdetail'">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th class="text-left">DETALLE</th>
+                                        <th class="text-right">APE</th>
+                                        <th class="text-right">ENE</th>
+                                        <th class="text-right">FEB</th>
+                                        <th class="text-right">MAR</th>
+                                        <th class="text-right">ABR</th>
+                                        <th class="text-right">MAY</th>
+                                        <th class="text-right">JUN</th>
+                                        <th class="text-right">JUL</th>
+                                        <th class="text-right">AGO</th>
+                                        <th class="text-right">SEP</th>
+                                        <th class="text-right">OCT</th>
+                                        <th class="text-right">NOV</th>
+                                        <th class="text-right">DIC</th>
+                                        <th class="text-right">TOTAL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="subdetail(data['form'])" t-as="elem">
+                                        <tr>
+                                            <td class="text-left"><b t-esc="elem['name']"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][0])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][1])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][2])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][3])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][4])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][5])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][6])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][7])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][8])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][9])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][10])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][11])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][12])"/></td>
+                                            <td class="text-right"><b t-esc="formatLang(elem['totals'][13])"/></td>
+                                        </tr>
+                                        <t t-foreach="elem['detail'].values()" t-as="sub">
+                                            <tr>
+                                                <td><i><b style="margin-left: 10px;" t-esc="sub['name']"/></i></td>
+                                                <td class="text-right"><b t-esc="formatLang(sub['d_totals'][0])"/></td>
+                                                <td class="text-right"><b t-esc="formatLang(sub['d_totals'][1])"/></td>
+                                                <td class="text-right"><b t-esc="formatLang(sub['d_totals'][2])"/></td>
+                                                <td class="text-right"><b t-esc="formatLang(sub['d_totals'][3])"/></td>
+                                                <td class="text-right"><b t-esc="formatLang(sub['d_totals'][4])"/></td>
+                                                <td class="text-right"><b t-esc="formatLang(sub['d_totals'][5])"/></td>
+                                                <td class="text-right"><b t-esc="formatLang(sub['d_totals'][6])"/></td>
+                                                <td class="text-right"><b t-esc="formatLang(sub['d_totals'][7])"/></td>
+                                                <td class="text-right"><b t-esc="formatLang(sub['d_totals'][8])"/></td>
+                                                <td class="text-right"><b t-esc="formatLang(sub['d_totals'][9])"/></td>
+                                                <td class="text-right"><b t-esc="formatLang(sub['d_totals'][10])"/></td>
+                                                <td class="text-right"><b t-esc="formatLang(sub['d_totals'][11])"/></td>
+                                                <td class="text-right"><b t-esc="formatLang(sub['d_totals'][12])"/></td>
+                                                <td class="text-right"><b t-esc="formatLang(sub['d_totals'][13])"/></td>
+                                            </tr>
+                                            <t t-foreach="sub['accounts'].values()" t-as="acc">
+                                                <tr>
+                                                    <td><i><span style="margin-left: 20px;" t-esc="acc['name']"/></i></td>
+                                                    <td class="text-right"><span t-esc="formatLang(acc['subtotals'][0])"/></td>
+                                                    <td class="text-right"><span t-esc="formatLang(acc['subtotals'][1])"/></td>
+                                                    <td class="text-right"><span t-esc="formatLang(acc['subtotals'][2])"/></td>
+                                                    <td class="text-right"><span t-esc="formatLang(acc['subtotals'][3])"/></td>
+                                                    <td class="text-right"><span t-esc="formatLang(acc['subtotals'][4])"/></td>
+                                                    <td class="text-right"><span t-esc="formatLang(acc['subtotals'][5])"/></td>
+                                                    <td class="text-right"><span t-esc="formatLang(acc['subtotals'][6])"/></td>
+                                                    <td class="text-right"><span t-esc="formatLang(acc['subtotals'][7])"/></td>
+                                                    <td class="text-right"><span t-esc="formatLang(acc['subtotals'][8])"/></td>
+                                                    <td class="text-right"><span t-esc="formatLang(acc['subtotals'][9])"/></td>
+                                                    <td class="text-right"><span t-esc="formatLang(acc['subtotals'][10])"/></td>
+                                                    <td class="text-right"><span t-esc="formatLang(acc['subtotals'][11])"/></td>
+                                                    <td class="text-right"><span t-esc="formatLang(acc['subtotals'][12])"/></td>
+                                                    <td class="text-right"><b t-esc="formatLang(acc['subtotals'][13])"/></td>
+                                                </tr>
+                                            </t>
+                                        </t>
+                                    </t>
+                                    <tr>
+                                        <td class="text-left"><b>TOTALES</b></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[0])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[1])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[2])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[3])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[4])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[5])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[6])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[7])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[8])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[9])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[10])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[11])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[12])"/></td>
+                                        <td class="text-right"><b t-esc="formatLang(p_totals()[13])"/></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>

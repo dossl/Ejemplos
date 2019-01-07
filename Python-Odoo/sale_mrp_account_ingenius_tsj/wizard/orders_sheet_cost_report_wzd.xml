@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="orders_cost_sheet_report_wzd_view" model="ir.ui.view">
+            <field name="name">Ficha de Costo de Ordenes</field>
+            <field name="model">orders.sheet.cost.report.wzd</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Ficha de Costo de Ordenes">
+                    <p class="oe_grey">
+                        Se imprimirá la ficha de costo de las órdenes seleccionadas.
+                    </p>
+                    <footer>
+                        <button name="xls_export" type="object" string="Imprimir"
+                                context="{'xls_export':1}" class="oe_highlight"/>
+                        o
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window name="Ficha de Costo" res_model="orders.sheet.cost.report.wzd" src_model="tsj.work.order"
+                    view_mode="form" target="new" key2="client_action_multi" id="orders_cost_sheet_report_action"/>
+
+    </data>
+</openerp>
+
+

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="account_chart_element_report_wzd_view" model="ir.ui.view">
+            <field name="name">Datos de la Factura</field>
+            <field name="model">account.chart.element.report.wzd</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Elementos de Gasto">
+                    <p class="oe_grey">
+                        Datos referentes al reporte de análisis de gastos:
+                        En modo detalle se imprimirá el detalle de cada uno de los elementos de gasto.
+                        En modo resumen solo se imprimirán los totales en cada uno de los elementos de gasto.
+                    </p>
+                    <group col="4" colspan="2">
+                        <group col="4" colspan="2">
+                            <field name="type" required="1" colspan="4"/>
+                            <label for="date_from" string="Duración"/>
+                            <div>
+                                <field name="date_from" nolabel="1" class="oe_inline"/>
+                                -
+                                <field name="date_to" nolabel="1" class="oe_inline"/>
+                            </div>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="print_report" type="object" string="Imprimir" class="oe_highlight"/>
+                        o
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="account_chart_element_report_action" model="ir.actions.act_window">
+            <field name="name">Elementos de Gasto</field>
+            <field name="res_model">account.chart.element.report.wzd</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="account_chart_element_report_wzd_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem action="account_chart_element_report_action" id="menu_action_account_chart_element_report"
+                  parent="account_ingenius_tsj.menu_action_account_invoice_reports" sequence="1"
+                  groups="base.group_no_one"/>
+
+        <report id="action_chart_element_report" model="account.chart.element.report.wzd"
+                string="Elementos de Gasto" report_type="qweb-pdf"
+                name="sale_mrp_account_ingenius_tsj.report_account_chart_element_tsj"
+                file="sale_mrp_account_ingenius_tsj.report_account_chart_element_tsj" menu="False" auto="False"/>
+
+        <record id="action_chart_element_report" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="account_ingenius_tsj.paperformat_landscape"/>
+        </record>
+
+    </data>
+</openerp>
+
+
